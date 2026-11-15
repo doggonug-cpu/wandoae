@@ -17,7 +17,9 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://wandoae.me/assets/hero-wando-1920.webp">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23081b14'/%3E%3Cpath d='M6 20c3-4 5-4 8 0s5 4 8 0' stroke='%23e9dfca' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cpath d='M6 13c3-4 5-4 8 0s5 4 8 0' stroke='%232a6b50' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="icon" href="assets/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
@@ -117,9 +119,8 @@ button{font:inherit;color:inherit}
   height:76px;
 }
 .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-weight:500;font-size:.98rem;letter-spacing:-.02em}
-.brand .mark{width:26px;height:26px;flex:none}
-.brand .mark path{stroke-linecap:round;fill:none}
-.brand-sub{
+.brand .mark{width:30px;height:27px;flex:none;object-fit:contain}
+.brand .mark path{stroke-linecap:round;fill:none}.brand-sub{
   display:block;font-size:.6rem;font-weight:400;opacity:.6;
   letter-spacing:.22em;text-transform:uppercase;line-height:1.4;
 }
@@ -599,6 +600,136 @@ section[id]{scroll-margin-top:84px}
 .report-list li{display:flex;gap:8px;font-size:.74rem;color:var(--ink-soft);line-height:1.6}
 .report-list li span:first-child{flex:none;color:var(--amber);font-size:.66rem;padding-top:.18em}
 
+/* ---------- 선물·납품 ---------- */
+.gifts{background:var(--paper);border-top:1px solid var(--line)}
+.set-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(16px,2.4vw,24px);margin-top:clamp(6px,1.6vw,14px);
+}
+.set-card{
+  position:relative;display:flex;flex-direction:column;gap:10px;
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:clamp(24px,3vw,34px);background:var(--cream);
+}
+.set-card--dark{
+  background:linear-gradient(158deg,var(--forest-800) 0%,var(--forest-900) 100%);
+  border-color:transparent;color:var(--cream);box-shadow:var(--shadow);
+}
+.set-flag{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.set-card--dark .set-flag{color:var(--amber-soft)}
+.set-card h3{font-size:clamp(1.28rem,2.2vw,1.6rem)}
+.set-price{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+.set-price span{font-family:var(--serif);font-size:clamp(1.95rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.1}
+.set-price small{font-size:.72rem;color:var(--ink-mute)}
+.set-card--dark .set-price small{color:rgba(247,243,234,.6)}
+.set-for{font-size:.86rem;color:var(--ink-soft);line-height:1.8}
+.set-card--dark .set-for{color:rgba(247,243,234,.72)}
+.set-list{margin-top:6px;display:grid;gap:7px;font-size:.81rem;color:var(--ink-soft);line-height:1.65}
+.set-list li{position:relative;padding-left:14px}
+.set-list li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:1px;background:var(--amber)}
+.set-card--dark .set-list{color:rgba(247,243,234,.7)}
+.set-card--dark .set-list li::before{background:var(--amber-soft)}
+
+.unit{margin-top:clamp(26px,4vw,40px);border-top:1px solid var(--line);padding-top:22px}
+.unit-head{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 12px;
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px;
+}
+.unit-head b{font-weight:500;color:var(--ink-soft)}
+.unit-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.unit-list li{
+  display:flex;flex-direction:column;gap:7px;padding:14px 16px;
+  border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--cream);
+  font-size:.83rem;color:var(--ink-soft);line-height:1.5;
+}
+.unit-list b{font-family:var(--serif);font-size:1.02rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.unit-list em{font-style:normal;font-size:.68rem;color:var(--ink-mute)}
+.unit-note{margin-top:12px;font-size:.75rem;color:var(--ink-mute);line-height:1.7}
+
+.gallery-rail{display:grid;grid-template-columns:1.52fr 1fr;gap:clamp(12px,2vw,20px);margin-top:clamp(32px,4.6vw,50px)}
+.gallery-rail figure{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;background:var(--sand)}
+.gallery-rail img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.gallery-rail figure:first-child img{aspect-ratio:3/2}
+.gallery-rail figure:last-child img{aspect-ratio:4/3}
+.gallery-rail figure:hover img{transform:scale(1.03)}
+.gallery-rail figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 16px 13px;
+  font-size:.7rem;color:rgba(247,243,234,.88);letter-spacing:.02em;
+  background:linear-gradient(to top,rgba(8,27,20,.78),transparent);
+}
+
+.catalog-block{margin-top:clamp(44px,6vw,68px)}
+.catalog-head h3{font-size:clamp(1.35rem,2.6vw,1.85rem);margin-bottom:12px}
+.catalog-head p{font-size:.94rem;color:var(--ink-soft);line-height:1.85;max-width:44em}
+.catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,26px);margin-top:clamp(22px,3vw,30px)}
+.cat{border-top:1px solid var(--line);padding-top:16px}
+.cat h4{
+  font-family:var(--sans);font-size:.74rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--moss);margin:0;
+}
+.cat-note{font-size:.77rem;color:var(--ink-mute);margin-top:7px;line-height:1.65}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chips li{
+  font-size:.78rem;color:var(--ink-soft);border:1px solid var(--line);
+  border-radius:999px;padding:5px 11px;background:var(--cream);line-height:1.5;
+  transition:border-color .25s,background .25s;
+}
+.chips li:hover{border-color:#d3c6ac;background:#fff}
+.catalog-note{margin-top:22px;font-size:.76rem;color:var(--ink-mute);line-height:1.75}
+
+.terms-block{
+  margin-top:clamp(44px,6vw,68px);background:var(--cream);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:clamp(22px,3vw,34px);
+}
+.terms-block h3{font-size:1.06rem;margin-bottom:18px}
+.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.6vw,28px);margin:0}
+.terms dt{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.terms dd{margin:0;font-size:.85rem;color:var(--ink-soft);line-height:1.8}
+
+.quote{
+  margin-top:clamp(44px,6vw,68px);border-radius:var(--radius-lg);
+  background:linear-gradient(162deg,var(--forest-900) 0%,var(--forest-800) 100%);
+  color:var(--cream);padding:clamp(24px,3.6vw,44px);scroll-margin-top:90px;
+}
+.quote-head h3{font-size:clamp(1.32rem,2.6vw,1.75rem);color:var(--cream);margin-bottom:10px}
+.quote-head p{font-size:.9rem;color:rgba(247,243,234,.7);line-height:1.88;max-width:42em}
+.quote-form{margin-top:clamp(20px,3vw,30px);display:grid;gap:18px}
+.qf-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.qf{display:flex;flex-direction:column;gap:7px}
+.qf > span:first-child,.qf-field legend{
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.58);font-weight:500;
+}
+.qf input,.qf textarea{
+  appearance:none;width:100%;background:rgba(247,243,234,.06);
+  border:1px solid rgba(247,243,234,.2);border-radius:10px;
+  color:var(--cream);padding:12px 14px;font:inherit;font-size:.9rem;
+  transition:border-color .25s,background .25s;
+}
+.qf textarea{resize:vertical;min-height:64px;line-height:1.6}
+.qf input::placeholder,.qf textarea::placeholder{color:rgba(247,243,234,.34)}
+.qf input:focus,.qf textarea:focus{outline:none;border-color:var(--amber-soft);background:rgba(247,243,234,.11)}
+.qf input[aria-invalid="true"]{border-color:#e2886b;background:rgba(226,136,107,.1)}
+.qf-field{border:0;padding:0;margin:0}
+.qf-field legend{padding:0;margin-bottom:9px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative;display:inline-flex}
+.pill input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;margin:0}
+.pill span{
+  display:inline-flex;align-items:center;font-size:.82rem;line-height:1.4;
+  border:1px solid rgba(247,243,234,.22);border-radius:999px;padding:9px 15px;
+  color:rgba(247,243,234,.74);transition:background .25s,border-color .25s,color .25s;
+}
+.pill:hover span{border-color:rgba(247,243,234,.45)}
+.pill input:checked + span{background:var(--amber);border-color:var(--amber);color:#1c1206;font-weight:500}
+.pill input:focus-visible + span{outline:2px solid var(--amber-soft);outline-offset:3px}
+.qf-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+.qf-actions .btn{width:auto}
+.btn-copy{background:transparent;border-color:rgba(247,243,234,.32);color:var(--cream)}
+.btn-copy:hover{border-color:rgba(247,243,234,.8);background:rgba(247,243,234,.08)}
+.qf-hint{font-size:.75rem;color:rgba(247,243,234,.5);line-height:1.75}
+.qf-hint a{color:rgba(247,243,234,.8);text-decoration:none;border-bottom:1px solid rgba(247,243,234,.3)}
+.qf-status{font-size:.8rem;color:var(--amber-soft);min-height:1.3em;line-height:1.6}
+
 /* ---------- 문의 ---------- */
 .contact{background:var(--sand);border-top:1px solid #ded2bb}
 .contact-grid{
@@ -615,8 +746,8 @@ section[id]{scroll-margin-top:84px}
   border-bottom:1px solid rgba(20,32,26,.26);padding-bottom:7px;
   transition:border-color .3s,color .3s,gap .3s;
 }
-.contact .mail:hover{border-color:var(--forest-900);gap:16px}
-.contact .mail svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact .mail:hover{border-color:var(--forest-900);gap:16px}.contact .mail svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact-cta{margin-top:clamp(20px,3vw,28px)}
 .contact-facts{
   background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);
   padding:clamp(22px,2.6vw,30px);box-shadow:var(--shadow);
@@ -640,7 +771,7 @@ section[id]{scroll-margin-top:84px}
   padding-bottom:30px;border-bottom:1px solid rgba(247,243,234,.12);
 }
 .footer-brand{display:flex;align-items:center;gap:10px;color:var(--cream);font-size:.92rem}
-.footer-brand .mark{width:24px;height:24px;flex:none}
+.footer-brand .mark{width:26px;height:23px;flex:none;object-fit:contain}
 .footer-nav{display:flex;flex-wrap:wrap;gap:22px}
 .footer-nav a{text-decoration:none;transition:color .25s}
 .footer-nav a:hover{color:var(--cream)}
@@ -660,6 +791,15 @@ section[id]{scroll-margin-top:84px}
 .reveal.is-in{opacity:1;transform:none}
 
 /* ---------- 반응형 ---------- */
+@media (max-width:1080px){
+  .set-grid{grid-template-columns:1fr}
+  .unit-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .catalog{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery-rail{grid-template-columns:1fr;gap:12px}
+  .gallery-rail figure:last-child img{aspect-ratio:16/9}
+  .terms{grid-template-columns:1fr}
+  .qf-row{grid-template-columns:1fr}
+}
 @media (max-width:1080px){
   .shield-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .shield-cols .report{grid-column:1 / -1;max-width:420px;transform:none;margin-top:8px}
@@ -735,17 +875,15 @@ section[id]{scroll-margin-top:84px}
 <!-- ============ 헤더 ============ -->
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="완도애협동조합 홈">
-      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M4 21c3.2-4.4 5.4-4.4 8.6 0s5.4 4.4 8.6 0 5.4-4.4 6.8-2" stroke="#9dbdab" stroke-width="2"/>
-        <path d="M4 14c3.2-4.4 5.4-4.4 8.6 0s5.4 4.4 8.6 0 5.4-4.4 6.8-2" stroke="#c07f35" stroke-width="2"/>
-      </svg>
+    <a class="brand" href="#top" aria-label="완도애협동조합 홈" data-en-aria-label="Wandoae Cooperative home">
+      <img class="mark" src="assets/logo-wandoae.webp" width="640" height="567" alt="" aria-hidden="true" decoding="async">
       <span>완도애협동조합<span class="brand-sub">Wandoae Cooperative</span></span>
     </a>
 
-    <nav class="nav" id="nav" aria-label="주요 섹션">
+    <nav class="nav" id="nav" aria-label="주요 섹션" data-en-aria-label="Main sections">
       <a href="#about" data-en="About" data-nav="about">조합 소개</a>
       <a href="#business" data-en="What we do" data-nav="business">사업 영역</a>
+      <a href="#gifts" data-en="Gifts & supply" data-nav="gifts">선물·납품</a>
       <a href="#shield" data-en="Mind Shield" data-nav="shield">마인드 쉴드</a>
       <a href="#contact" data-en="Contact" data-nav="contact">문의</a>
     </nav>
@@ -768,9 +906,9 @@ section[id]{scroll-margin-top:84px}
     <div class="hero-media" id="heroMedia">
       <img src="assets/hero-wando-1920.webp"
            srcset="assets/hero-wando-1200.webp 1200w, assets/hero-wando-1920.webp 1920w"
-           sizes="100vw" width="1915" height="821"
-           alt="완도 다도해의 새벽 — 겹겹의 섬 능선과 잔잔한 바다"
-           data-en-alt="Dawn over the Wando archipelago — layered island ridges above still water"
+           sizes="100vw" width="1920" height="824"
+           alt="남해안 다도해의 섬 능선과 잔잔한 바다"
+           data-en-alt="Island ridges above a calm sea on Korea's south coast"
            fetchpriority="high" decoding="async">
     </div>
     <div class="hero-veil" aria-hidden="true"></div>
@@ -849,12 +987,12 @@ section[id]{scroll-margin-top:84px}
       <figure class="about-figure reveal">
         <div class="frame">
           <img src="assets/about-craft.webp" width="880" height="1173" loading="lazy" decoding="async"
-               alt="젖은 바위 위에 놓인 매생이를 든 손과 밧줄 — 완도 바다의 결"
-               data-en-alt="Weathered hands holding fresh seaweed on wet rock, with a coil of rope — the grain of Wando's sea">
+               alt="새벽 어시장에서 물건을 살피는 상인의 모습"
+               data-en-alt="A fish seller at her stall before the morning trade">
         </div>
         <figcaption>
           <span data-en="The grain of the sea and the hand">바다와 손의 결</span>
-          <span data-en="AI-generated image">AI 생성 이미지</span>
+          <span data-en="Photo · stock">사진 · 스톡</span>
         </figcaption>
       </figure>
 
@@ -953,8 +1091,8 @@ section[id]{scroll-margin-top:84px}
           </div>
           <div class="show-media">
             <img src="assets/biz-mindshield.webp" width="1400" height="1050" loading="lazy" decoding="async"
-                 alt="밝은 어르신 복지 공간에서 태블릿 화면을 함께 보며 웃는 어르신과 돌봄 종사자"
-                 data-en-alt="An elder and a caregiver smiling at a tablet in a bright community centre">
+                 alt="식사를 하시는 어르신"
+                 data-en-alt="A senior woman at her meal">
             <span class="media-tag" data-en="Care · Mind Shield">돌봄 · 마인드 쉴드</span>
           </div>
         </article>
@@ -982,26 +1120,28 @@ section[id]{scroll-margin-top:84px}
             <div class="lineup">
               <p class="lineup-head">
                 <b data-en="Line-up in preparation">라인업 준비 중</b>
-                <span data-en="4 items">4종</span>
+                <span data-en="6 groups">6묶음</span>
               </p>
               <ul class="lineup-grid">
-                <li><b>01</b><span data-en="Freeze-dried seaweed (maesaengi)">동결건조 매생이</span></li>
-                <li><b>02</b><span data-en="Braised abalone sauce">전복 만능볶음장</span></li>
-                <li><b>03</b><span data-en="Wando gopchang-gim">완도 곱창김</span></li>
-                <li><b>04</b><span data-en="Wando kelp &amp; miyeok">완도 다시마·미역</span></li>
+                <li><b>01</b><span data-en="Abalone">전복 · 전복 만능볶음장</span></li>
+                <li><b>02</b><span data-en="Gim (laver)">곱창김 · 돌김</span></li>
+                <li><b>03</b><span data-en="Maesaengi">동결건조 매생이</span></li>
+                <li><b>04</b><span data-en="Kelp &amp; miyeok">다시마 · 미역 · 톳</span></li>
+                <li><b>05</b><span data-en="Dried fish">건멸치 · 건어물</span></li>
+                <li><b>06</b><span data-en="Yuja &amp; loquat">유자 · 비파</span></li>
               </ul>
-              <p class="lineup-note" data-en="The final line-up, packaging and supply terms are still being set. Ask us and we will confirm what can ship now.">최종 라인업과 포장, 납품 조건은 조정 중입니다. 지금 보내드릴 수 있는 구성은 문의로 확인해 주세요.</p>
+              <p class="lineup-note" data-en="Two B2B standard sets are fixed at 29,000 and 49,000 KRW. Everything else is quoted to order — see the gift and supply section.">B2B 표준 세트 2종은 29,000원·49,000원으로 확정했습니다. 그 밖의 구성은 주문에 맞춰 견적합니다 — 아래 선물·납품에서 확인하세요.</p>
             </div>
 
-            <a class="show-link" href="#contact">
-              <span data-en="Ask about supply">납품 문의하기</span>
+            <a class="show-link" href="#gifts">
+              <span data-en="See gift sets and prices">선물세트·전체 품목 보기</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
           <div class="show-media is-portrait">
             <img src="assets/biz-specialty.webp" width="1000" height="1250" loading="lazy" decoding="async"
-                 alt="유리병에 담긴 전복 볶음장과 동결건조 매생이, 갓 지은 쌀밥과 참기름을 차린 음식 사진"
-                 data-en-alt="A jar of braised abalone sauce with freeze-dried seaweed, steamed rice and sesame oil">
+                 alt="얼음 위에 올린 싱싱한 전복"
+                 data-en-alt="Fresh abalone on crushed ice">
             <span class="media-tag" data-en="Produce · Wando">유통 · 완도 특산물</span>
           </div>
         </article>
@@ -1032,11 +1172,273 @@ section[id]{scroll-margin-top:84px}
           </div>
           <div class="show-media">
             <img src="assets/biz-edutech.webp" width="1400" height="1050" loading="lazy" decoding="async"
-                 alt="밝은 교실에서 아이들이 노트북으로 디자인 작업을 하고 교사가 화면을 가리키는 모습"
-                 data-en-alt="Children designing on a laptop in a bright classroom while a teacher points at the screen">
+                 alt="노트북을 함께 보며 배우는 아이들"
+                 data-en-alt="Children learning together around a laptop">
             <span class="media-tag" data-en="Education · Classroom">교육 · 교실</span>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 선물·납품 ============ -->
+  <section class="section gifts" id="gifts">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="kicker"><b>03</b><span class="kicker-line" aria-hidden="true"></span><span data-en="Gifts &amp; supply">선물·납품</span></p>
+        <h2 data-en="Wando, packed for the person who receives it">완도의 것으로, 받는 분의 자리까지</h2>
+        <p data-en="Abalone, laver, maesaengi and kelp from Wando — and what comes from Haenam and Jindo next door. We pack them as institutional gift sets and holiday gifts. Two standard sets have fixed prices; everything else is built around your budget and headcount.">
+          완도의 전복·김·매생이·다시마부터 이웃한 해남·진도에서 나는 것까지,
+          기관·기업 답례품과 명절 선물로 묶어 보냅니다. 표준 세트 두 가지는 가격을 정해 두었고,
+          그 밖의 구성은 예산과 인원에 맞춰 짭니다.
+        </p>
+      </div>
+
+      <div class="set-grid">
+        <article class="set-card reveal">
+          <p class="set-flag" data-en="Standard set A">표준 세트 A</p>
+          <h3 data-en="Practical gift set">실속 답례형</h3>
+          <p class="set-price"><span>29,000</span><small data-en="KRW · VAT included">원 · VAT 포함</small></p>
+          <p class="set-for" data-en="Gifts for institutional events, mementos for seminars and workshops, staff gifts in volume.">기관 행사 답례품, 세미나·워크숍 기념품, 대량 임직원 선물.</p>
+          <ul class="set-list">
+            <li data-en="Composition: signature Wando items put together at a practical price — the exact items are fixed in the quotation.">구성: 완도 대표 품목을 실속 있게 묶은 구성 — 세부 품목은 견적서에서 확정합니다.</li>
+            <li data-en="Minimum order 10 sets.">최소 주문 10세트.</li>
+            <li data-en="Priced for delivery to one address; individual shipping adds delivery cost.">1곳 일괄 배송 기준이며, 개별 발송은 배송비가 별도입니다.</li>
+          </ul>
+        </article>
+
+        <article class="set-card set-card--dark reveal">
+          <p class="set-flag" data-en="Standard set B · flagship">표준 세트 B · 주력</p>
+          <h3 data-en="Premium gift set">주력 프리미엄형</h3>
+          <p class="set-price"><span>49,000</span><small data-en="KRW · VAT included">원 · VAT 포함</small></p>
+          <p class="set-for" data-en="Holiday gifts for corporate partners, and for VIPs and guests of honour.">명절 기업 거래처 선물, VIP·주요 내빈 의전용.</p>
+          <ul class="set-list">
+            <li data-en="Composition: braised abalone sauce, freeze-dried maesaengi and other signature items.">구성: 전복 만능볶음장, 동결건조 매생이 등 대표 품목.</li>
+            <li data-en="Minimum order 10 sets.">최소 주문 10세트.</li>
+            <li data-en="Logo stickers and greeting bands available.">로고 스티커·인사말 띠지 부착 가능.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="unit reveal">
+        <p class="unit-head">
+          <b data-en="Consumer line · fixed prices">소비자 라인 · 확정가</b>
+          <span data-en="Prices in KRW">단위: 원</span>
+        </p>
+        <ul class="unit-list">
+          <li><span data-en="Braised abalone sauce, 200 g">전복 만능볶음장 200g</span><b>14,900원</b><em data-en="Signature item">대표 품목</em></li>
+          <li><span data-en="Freeze-dried maesaengi, 10 blocks">동결건조 매생이 10블록</span><b>19,900원</b><em data-en="Wando maesaengi">완도 매생이</em></li>
+          <li><span data-en="Home-meal kit">집밥 치트키 세트</span><b>31,900원</b><em data-en="Kitchen set">주방 구성</em></li>
+          <li><span data-en="Holiday gift set">명절 선물세트</span><b>38,900원</b><em data-en="Seasonal">명절용</em></li>
+        </ul>
+        <p class="unit-note" data-en="These are separate from the two B2B standard sets above. VAT and delivery terms for single items are written into the quotation.">위 B2B 표준 세트와는 별개 구성입니다. 단품의 VAT·배송 조건은 견적서에 함께 적어 드립니다.</p>
+      </div>
+
+      <div class="gallery-rail reveal">
+        <figure>
+          <img src="assets/produce-market.webp" width="900" height="600" loading="lazy" decoding="async"
+               alt="건어물과 해조류를 늘어놓은 시장 노점"
+               data-en-alt="A market stall stacked with dried fish and seaweed">
+          <figcaption data-en="Dried fish and seaweed — graded and packed at the source">건어물과 해조류 — 산지에서 골라 담습니다</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/abalone-tank.webp" width="1200" height="900" loading="lazy" decoding="async"
+               alt="수조 안의 활전복"
+               data-en-alt="A live abalone in a holding tank">
+          <figcaption data-en="Live abalone — kept in seawater until it ships">활전복 — 출고 때까지 바닷물에 담아 둡니다</figcaption>
+        </figure>
+      </div>
+
+      <div class="catalog-block">
+        <div class="catalog-head reveal">
+          <h3 data-en="What comes out of Wando">완도에서 나는 것</h3>
+          <p data-en="Wando is 201 islands. Seaweed farming is what the coast does best: the county grows about a quarter of Korea's laver, and it accounts for the largest share of the country's abalone. These are the items that can go into a set.">
+            완도는 201개의 섬으로 이루어진 고장입니다. 해조류 양식이 발달해 김은 전국 생산의 4분의 1을,
+            전복은 가장 많은 양을 냅니다. 선물세트에 담을 수 있는 품목은 아래와 같습니다.
+          </p>
+        </div>
+
+        <div class="catalog reveal">
+          <article class="cat">
+            <h4 data-en="Abalone">전복</h4>
+            <p class="cat-note" data-en="The largest producer in Korea, farmed in sea cages since the technique was first developed here.">국내에서 가장 많이 나고, 해상 가두리 양식 기술도 완도에서 처음 시작했습니다.</p>
+            <ul class="chips">
+              <li data-en="Live abalone">활전복</li>
+              <li data-en="Shelled abalone">순살전복</li>
+              <li data-en="Abalone in soy">전복장</li>
+              <li data-en="Braised abalone sauce">전복 만능볶음장</li>
+              <li data-en="Semi-dried abalone">반건조 전복</li>
+            </ul>
+          </article>
+
+          <article class="cat">
+            <h4 data-en="Gim (laver)">김</h4>
+            <p class="cat-note" data-en="Grown on rocks rich in elvan, which is why the county's laver is known for its savour and minerals.">맥반석으로 형성된 해역에서 자라 맛과 영양이 좋기로 알려져 있습니다.</p>
+            <ul class="chips">
+              <li data-en="Gopchang-gim">곱창김</li>
+              <li data-en="Dol-gim">돌김</li>
+              <li data-en="Parae-gim">파래김</li>
+              <li data-en="Gim bugak">김부각</li>
+              <li data-en="Winter mul-gim">겨울 물김</li>
+            </ul>
+          </article>
+
+          <article class="cat">
+            <h4 data-en="Seaweed">해조류</h4>
+            <p class="cat-note" data-en="Kelp, miyeok, hiziki, maesaengi, mojaban and cheonggak, cut and dried on the coast.">다시마·미역·톳·매생이·모자반·청각까지, 바닷가에서 말립니다.</p>
+            <ul class="chips">
+              <li data-en="Kelp (dasima)">다시마</li>
+              <li data-en="Miyeok">미역</li>
+              <li data-en="Cut miyeok">자른미역</li>
+              <li data-en="Hiziki (tot)">톳</li>
+              <li data-en="Maesaengi">매생이</li>
+              <li data-en="Mojaban">모자반</li>
+              <li data-en="Cheonggak">청각</li>
+              <li data-en="Umu (agar)">우무</li>
+            </ul>
+          </article>
+
+          <article class="cat">
+            <h4 data-en="Dried fish &amp; catch">건어물·수산</h4>
+            <p class="cat-note" data-en="Anchovy from waters where the cold and warm currents meet; oysters and Spanish mackerel in winter.">한류와 난류가 만나는 바다의 멸치, 겨울의 굴과 삼치.</p>
+            <ul class="chips">
+              <li data-en="Dried anchovy">건멸치</li>
+              <li data-en="Oysters">굴</li>
+              <li data-en="Spanish mackerel (winter)">삼치 (겨울)</li>
+              <li data-en="Gamtae">감태</li>
+            </ul>
+          </article>
+
+          <article class="cat">
+            <h4 data-en="Fruit &amp; goods">과실·가공</h4>
+            <p class="cat-note" data-en="Yuja from Gogeum, loquat grown in sea wind, and hwangchil — the county's own tree.">고금의 유자, 해풍을 맞고 자란 비파, 완도의 황칠.</p>
+            <ul class="chips">
+              <li data-en="Yuja">유자</li>
+              <li data-en="Loquat (bipa)">비파</li>
+              <li data-en="Hwangchil">황칠</li>
+              <li data-en="Yuja tea">유자차</li>
+              <li data-en="Kelp Jangajji">다시마 장아찌</li>
+            </ul>
+          </article>
+
+          <article class="cat">
+            <h4 data-en="Haenam · Jindo">해남·진도 연계</h4>
+            <p class="cat-note" data-en="From the two counties next door — sourced together with Wando items when a set calls for it.">이웃한 두 고장의 것. 세트에 필요하면 완도 품목과 함께 구성합니다.</p>
+            <ul class="chips">
+              <li data-en="Haenam sweet potato">해남 고구마</li>
+              <li data-en="Haenam winter cabbage">해남 절임배추</li>
+              <li data-en="Haenam mul-gim">해남 물김</li>
+              <li data-en="Jindo gopchang-gim">진도 곱창김</li>
+              <li data-en="Jindo dol-miyeok">진도 돌미역</li>
+              <li data-en="Jindo turmeric">진도 울금</li>
+              <li data-en="Jindo goji">진도 구기자</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="catalog-note" data-en="What is available changes with the season and the day's auction. If something is out, we propose the nearest substitute and confirm the composition in writing before the order is placed.">
+          품목은 계절과 그날의 위판 상황에 따라 달라집니다. 빠지는 품목이 있으면 가장 가까운 대체로 제안하고,
+          주문 전에 구성을 서면으로 확정합니다.
+        </p>
+      </div>
+
+      <div class="terms-block reveal">
+        <h3 data-en="Terms for institutional orders">B2B 거래 조건</h3>
+        <dl class="terms">
+          <div>
+            <dt data-en="Minimum order">최소주문수량</dt>
+            <dd data-en="10 sets or more. The 29,000 KRW set is priced for delivery to one address; individual shipping adds delivery cost.">10세트 이상. 실속 답례형(29,000원)은 1곳 일괄 배송 기준이며, 개별 발송은 배송비가 별도입니다.</dd>
+          </div>
+          <div>
+            <dt data-en="Fast dispatch">빠른 출고</dt>
+            <dd data-en="Standard sets of 50 or fewer ship within one business day of order and payment confirmation. Larger volumes and custom bands are arranged separately.">표준 구성 50세트 이하, 발주와 결제 확정 후 영업일 1일 이내 출고합니다. 대량 주문과 맞춤 띠지 제작은 별도 협의합니다.</dd>
+          </div>
+          <div>
+            <dt data-en="Free sample">무상 샘플</dt>
+            <dd data-en="One set is sent in advance to companies and institutions considering 20 sets or more, once a business registration or institutional number certificate is verified.">사업자등록증 또는 기관 고유번호증 인증을 마친 20세트 이상 검토 기업·기관에 1세트를 먼저 보내 드립니다.</dd>
+          </div>
+          <div>
+            <dt data-en="Customisation">맞춤 옵션</dt>
+            <dd data-en="Company or institution logo stickers and greeting bands. Electronic tax invoices and quotations are issued immediately.">기업·기관 로고 스티커와 인사말 띠지를 부착합니다. 전자세금계산서와 견적서는 바로 발행합니다.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="quote reveal" id="quote">
+        <div class="quote-head">
+          <h3 data-en="Ask for a quotation or a sample">견적·샘플 신청</h3>
+          <p data-en="Fill in the five items below. The button opens a mail message to contact@wandoae.me with the request already written, or copy the text and send it yourself.">
+            아래 다섯 가지만 적어 주세요. 버튼을 누르면 요청 내용이 채워진 메일이 열리고,
+            필요하면 그대로 복사해 보내실 수도 있습니다.
+          </p>
+        </div>
+
+        <form class="quote-form" id="quoteForm" novalidate>
+          <div class="qf-row">
+            <label class="qf">
+              <span data-en="Institution or company">기관·기업명</span>
+              <input type="text" id="qfOrg" name="org" autocomplete="organization"
+                     placeholder="예) 완도군노인복지관" data-en-placeholder="e.g. Wando Senior Welfare Centre" required>
+            </label>
+            <label class="qf">
+              <span data-en="Contact name">담당자 성함</span>
+              <input type="text" id="qfName" name="name" autocomplete="name"
+                     placeholder="예) 김한울" data-en-placeholder="Full name" required>
+            </label>
+            <label class="qf">
+              <span data-en="Phone or email">연락처</span>
+              <input type="text" id="qfContact" name="contact" autocomplete="tel"
+                     placeholder="전화번호 또는 메일" data-en-placeholder="Phone or email" required>
+            </label>
+          </div>
+
+          <fieldset class="qf-field">
+            <legend data-en="Preferred set">희망 구성</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="setChoice" value="실속 답례형 29,000원" checked><span data-en="Practical · 29,000 KRW">실속 답례형 29,000원</span></label>
+              <label class="pill"><input type="radio" name="setChoice" value="주력 프리미엄형 49,000원"><span data-en="Premium · 49,000 KRW">주력 프리미엄형 49,000원</span></label>
+              <label class="pill"><input type="radio" name="setChoice" value="혼합·맞춤 구성"><span data-en="Mixed / custom">혼합·맞춤 구성</span></label>
+            </div>
+          </fieldset>
+
+          <div class="qf-row">
+            <label class="qf">
+              <span data-en="Estimated quantity">예상 수량</span>
+              <input type="text" id="qfQty" name="qty" inputmode="numeric"
+                     placeholder="예) 30세트" data-en-placeholder="e.g. 30 sets">
+            </label>
+            <div class="qf">
+              <span data-en="Request type">요청 유형</span>
+              <span class="pills">
+                <label class="pill"><input type="radio" name="kindChoice" value="정식 견적서 요청" checked><span data-en="Formal quotation">정식 견적서 요청</span></label>
+                <label class="pill"><input type="radio" name="kindChoice" value="무상 샘플 신청(사업자·기관 인증)"><span data-en="Free sample">무상 샘플 신청</span></label>
+              </span>
+            </div>
+          </div>
+
+          <label class="qf">
+            <span data-en="Notes (optional)">참고 사항 (선택)</span>
+            <textarea id="qfMemo" name="memo" rows="2"
+                      placeholder="배송 시기, 예산, 로고·띠지 요청 등"
+                      data-en-placeholder="Delivery date, budget, logo or band requests"></textarea>
+          </label>
+
+          <div class="qf-actions">
+            <button type="submit" class="btn btn-primary">
+              <span data-en="Send by email">메일로 신청서 보내기</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <button type="button" class="btn btn-copy" id="copyBtn">
+              <span data-en="Copy the request">요청서 복사</span>
+            </button>
+          </div>
+
+          <p class="qf-hint" data-en="The button opens your mail app with the request filled in. If it does not open, copy the request and send it to contact@wandoae.me. For a KakaoTalk consultation, leave a number and we will call you.">
+            버튼을 누르면 메일 앱에 요청서가 채워집니다. 열리지 않으면 ‘요청서 복사’로 내용을 복사해
+            contact@wandoae.me 로 보내 주세요. 카카오톡 상담을 원하시면 연락처를 남겨 주시면 담당자가 연락드립니다.
+          </p>
+          <p class="qf-status" id="quoteStatus" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -1059,9 +1461,9 @@ section[id]{scroll-margin-top:84px}
       </div>
 
       <figure class="shield-figure reveal">
-        <img src="assets/biz-mindshield.webp" width="1400" height="1050" loading="lazy" decoding="async"
-             alt="태블릿으로 생애 화보집을 함께 보는 어르신과 돌봄 종사자"
-             data-en-alt="An elder and a caregiver looking at a life album on a tablet">
+        <img src="assets/shield-wide.webp" width="1600" height="800" loading="lazy" decoding="async"
+             alt="손뜨개를 함께 하며 웃는 어른과 아이"
+             data-en-alt="An adult and a child laughing over their knitting">
         <figcaption>
           <b data-en="Voice first, screen second">먼저 목소리, 다음 화면</b>
           <span data-en="Interview → manuscript → album → monthly report. The screen only carries what the elder already said.">인터뷰 → 원고 → 화보집 → 월간 리포트. 화면은 어르신이 이미 하신 말을 담아 둘 뿐입니다.</span>
@@ -1168,14 +1570,17 @@ section[id]{scroll-margin-top:84px}
   <section class="section contact" id="contact">
     <div class="wrap contact-grid">
       <div>
-        <p class="kicker reveal"><b>03</b><span class="kicker-line" aria-hidden="true"></span><span data-en="Contact">문의</span></p>
+        <p class="kicker reveal"><b>04</b><span class="kicker-line" aria-hidden="true"></span><span data-en="Contact">문의</span></p>
         <h2 class="reveal">
           <span data-en="Looking for institutions">함께할 기관과</span><br>
           <em data-en="and people to build with">사람을 찾습니다</em>
         </h2>
         <p class="reveal" data-en="Institutional adoption of Mind Shield, produce supply, classroom material — anything is fine. Write to us and we will reply once we have read it.">
-          마인드 쉴드 기관 도입, 특산물 납품, 수업 자료 제안 — 무엇이든 좋습니다.
+          마인드 쉴드 기관 도입, 특산물 납품·선물세트, 수업 자료 제안 — 무엇이든 좋습니다.
           메일을 보내주시면 확인 후 답장드립니다.
+        </p>
+        <p class="contact-cta reveal">
+          <a class="btn btn-dark" href="#quote" data-en="Gift quote · sample request">선물세트 견적·샘플 신청</a>
         </p>
         <a class="mail reveal" href="mailto:contact@wandoae.me">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
@@ -1212,15 +1617,13 @@ section[id]{scroll-margin-top:84px}
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M4 21c3.2-4.4 5.4-4.4 8.6 0s5.4 4.4 8.6 0 5.4-4.4 6.8-2" stroke="#9dbdab" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <path d="M4 14c3.2-4.4 5.4-4.4 8.6 0s5.4 4.4 8.6 0 5.4-4.4 6.8-2" stroke="#c07f35" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </svg>
+        <img class="mark" src="assets/logo-wandoae.webp" width="640" height="567" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>완도애협동조합 <span style="opacity:.55">Wandoae Cooperative</span></span>
       </div>
-      <nav class="footer-nav" aria-label="바닥글">
+      <nav class="footer-nav" aria-label="바닥글" data-en-aria-label="Footer">
         <a href="#about" data-en="About">조합 소개</a>
         <a href="#business" data-en="What we do">사업 영역</a>
+        <a href="#gifts" data-en="Gifts &amp; supply">선물·납품</a>
         <a href="#shield" data-en="Mind Shield">마인드 쉴드</a>
         <a href="#contact" data-en="Contact">문의</a>
         <a href="mailto:contact@wandoae.me">contact@wandoae.me</a>
@@ -1228,7 +1631,8 @@ section[id]{scroll-margin-top:84px}
     </div>
     <div class="footer-bottom">
       <p>© <span id="year">2026</span> 완도애협동조합 · Wandoae Cooperative</p>
-      <p data-en="Photographs on this page are AI-generated. Business descriptions are current as of November 2026.">이 페이지의 사진은 AI로 생성한 이미지이며, 사업 소개는 2026년 11월 기준입니다.</p>
+      <p>완도애협동조합 · <span data-en="Hanul Kim, CTO">CTO 김한울</span> · contact@wandoae.me · <span data-en="Wando-eup, Wando-gun, Jeollanam-do">전라남도 완도군 완도읍</span></p>
+      <p data-en="Photographs are licensed stock images (Pexels), not taken on site in Wando. Business descriptions are current as of November 2026.">사진은 상업적 무료 이용이 허용된 스톡 이미지(Pexels)이며 완도 현장 촬영본이 아닙니다. 사업 소개는 2026년 11월 기준입니다.</p>
     </div>
   </div>
   <p class="footer-wordmark" aria-hidden="true">WANDOAE</p>
@@ -1283,6 +1687,11 @@ section[id]{scroll-margin-top:84px}
     document.querySelectorAll("[data-en-aria-label]").forEach(function (el) {
       if (!original.has(el)) original.set(el, el.getAttribute("aria-label") || "");
       el.setAttribute("aria-label", lang === "en" ? el.getAttribute("data-en-aria-label") : original.get(el));
+    });
+
+    document.querySelectorAll("[data-en-placeholder]").forEach(function (el) {
+      if (!original.has(el)) original.set(el, el.getAttribute("placeholder") || "");
+      el.setAttribute("placeholder", lang === "en" ? el.getAttribute("data-en-placeholder") : original.get(el));
     });
 
     document.title = TITLE[lang];
@@ -1414,7 +1823,7 @@ section[id]{scroll-margin-top:84px}
   });
 
   /* ---------- 현재 섹션 표시 ---------- */
-  var sections = ["about", "business", "shield", "contact"]
+  var sections = ["about", "business", "gifts", "shield", "contact"]
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
 
@@ -1439,6 +1848,107 @@ section[id]{scroll-margin-top:84px}
   /* ---------- 연도 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---------- 견적·샘플 신청서 ---------- */
+  var form = document.getElementById("quoteForm");
+
+  if (form) {
+    var statusEl = document.getElementById("quoteStatus");
+    var isEn = function () { return document.documentElement.lang === "en"; };
+
+    var say = function (ko, en) { if (statusEl) statusEl.textContent = isEn() ? en : ko; };
+
+    var val = function (id) {
+      var el = document.getElementById(id);
+      return el ? (el.value || "").trim() : "";
+    };
+
+    var checked = function (name, fallback) {
+      var el = form.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : fallback;
+    };
+
+    var buildText = function () {
+      var org = val("qfOrg"), person = val("qfName"), contact = val("qfContact");
+      var set = checked("setChoice", "실속 답례형 29,000원");
+      var kind = checked("kindChoice", "정식 견적서 요청");
+      var qty = val("qfQty"), memo = val("qfMemo");
+      var lines = [
+        "완도애협동조합 " + (kind.indexOf("샘플") > -1 ? "무상 샘플" : "견적") + " 신청",
+        "",
+        "· 기관·기업명: " + (org || "-"),
+        "· 담당자: " + (person || "-"),
+        "· 연락처: " + (contact || "-"),
+        "· 희망 구성: " + set,
+        "· 예상 수량: " + (qty || "-"),
+        "· 요청 유형: " + kind
+      ];
+      if (memo) lines.push("· 참고 사항: " + memo);
+      lines.push("", "문의: contact@wandoae.me");
+      return { text: lines.join("\n"), org: org, set: set, kind: kind };
+    };
+
+    var markInvalid = function () {
+      ["qfOrg", "qfName", "qfContact"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var empty = !val(id);
+        el.setAttribute("aria-invalid", String(empty));
+        if (empty && !form.dataset.focused) { el.focus(); form.dataset.focused = "1"; }
+      });
+      delete form.dataset.focused;
+    };
+
+    form.addEventListener("input", function (e) {
+      if (e.target && e.target.getAttribute("aria-invalid") === "true" && e.target.value.trim()) {
+        e.target.setAttribute("aria-invalid", "false");
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!val("qfOrg") || !val("qfName") || !val("qfContact")) {
+        markInvalid();
+        say("기관명·담당자·연락처를 적어 주세요.", "Please fill in the institution, name and contact.");
+        return;
+      }
+      var msg = buildText();
+      var subject = "[완도애 " + (msg.kind.indexOf("샘플") > -1 ? "샘플" : "견적") + "] " + msg.org + " · " + msg.set;
+      window.location.href = "mailto:contact@wandoae.me?subject=" +
+        encodeURIComponent(subject) + "&body=" + encodeURIComponent(msg.text);
+      say("메일 앱에 요청서를 담았습니다. 보내기만 눌러 주세요.",
+          "Your mail app is opening with the request filled in. Just press send.");
+    });
+
+    var copyBtn = document.getElementById("copyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var text = buildText().text;
+        var done = function () {
+          say("요청서를 복사했습니다. contact@wandoae.me 로 붙여 넣어 보내 주세요.",
+              "Copied. Paste it into an email to contact@wandoae.me.");
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); });
+        } else {
+          fallbackCopy(text, done);
+        }
+      });
+    }
+
+    function fallbackCopy(text, done) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); done(); }
+      catch (err) { say("복사가 막혔습니다. 내용을 직접 선택해 복사해 주세요.", "Copy was blocked. Please select the text and copy it."); }
+      document.body.removeChild(ta);
+    }
+  }
 })();
 </script>
 </body>
