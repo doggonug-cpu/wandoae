@@ -14,7 +14,7 @@
 | `biz-edutech.webp` | https://www.pexels.com/photo/3401402/ | Pexels License | 교육 카드 |
 | `produce-market.webp` | https://www.pexels.com/photo/19590472/ | Pexels License | 선물·납품 (건어물·해조류) |
 | `abalone-tank.webp` | https://www.pexels.com/photo/8352355/ | Pexels License | 선물·납품 (활전복) |
-| `logo-wandoae.webp`, `logo-wandoae.png`, `favicon-64.png`, `favicon-192.png`, `apple-touch-icon.png` | 조합 제공 공식 로고 이미지(2026-11-16) | 조합 자산 | 로고·파비콘 |
+| `logo-wandoae.webp`, `favicon-64.png`, `favicon-192.png`, `apple-touch-icon.png` | 조합 제공 공식 로고 이미지(2026-11-16) | 조합 자산 | 로고·파비콘 |
 
 ## 처리 방식
 

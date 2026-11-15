@@ -78,7 +78,7 @@ AI 수채화 삽화 · 육성 오디오 재생 → A4 1장 월간 리포트(SGDS
 | `biz-edutech.webp` | 교육 카드 | 1400×1050 |
 | `produce-market.webp` | 선물·납품 섹션 (건어물·해조류) | 900×600 |
 | `abalone-tank.webp` | 선물·납품 섹션 (활전복) | 1200×900 |
-| `logo-wandoae.webp` / `logo-wandoae.png` | 공식 로고 (투명 배경) — 헤더·푸터 마크 | 640×567 |
+| `logo-wandoae.webp` | 공식 로고 (투명 배경, WebP) — 헤더·푸터 마크 | 640×567 |
 | `favicon-64.png`, `favicon-192.png`, `apple-touch-icon.png` | 파비콘·홈 화면 아이콘 | 64 / 192 / 180 |
 
 - **사진은 AI 생성 이미지가 아니다.** 상업적 무료 이용이 허용된 스톡 사진(Pexels License, Unsplash License)을
