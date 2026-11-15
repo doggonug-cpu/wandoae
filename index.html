@@ -649,9 +649,9 @@ section[id]{scroll-margin-top:84px}
   padding-top:24px;font-size:.72rem;color:rgba(247,243,234,.5);
 }
 .footer-wordmark{
-  font-family:var(--sans);font-weight:700;letter-spacing:-.05em;line-height:.78;
+  font-family:var(--sans);font-weight:700;letter-spacing:-.05em;line-height:1;
   font-size:clamp(3.6rem,15.6vw,13rem);color:rgba(247,243,234,.055);
-  margin-top:clamp(28px,4vw,46px);text-align:center;user-select:none;
+  margin-top:clamp(28px,4vw,46px);margin-bottom:-.13em;text-align:center;user-select:none;
   white-space:nowrap;overflow:hidden;
 }
 
@@ -691,6 +691,9 @@ section[id]{scroll-margin-top:84px}
   .show-media,.show-media.is-portrait{aspect-ratio:16/11}
   .shield-cols{grid-template-columns:1fr;gap:30px}
   .shield-figure{aspect-ratio:16/10}
+  .shield-figure::after{background:linear-gradient(to top,rgba(8,27,20,.88) 0%,rgba(8,27,20,.28) 48%,rgba(8,27,20,.42) 100%)}
+  .shield-figure figcaption{font-size:.72rem}
+  .shield-figure figcaption b{font-size:.92rem}
   .contact-grid{grid-template-columns:1fr}
   .hero-index{grid-template-columns:1fr}
   .hero-index a{
@@ -782,7 +785,7 @@ section[id]{scroll-margin-top:84px}
       </h1>
 
       <p class="hero-lede" data-en="Wandoae Cooperative connects the fisheries and farms of Wando with the care and the learning that happen here — so that an elder's memory, the sea's harvest, and a child's curiosity keep their worth inside the region.">
-        완도애협동조합은 완도의 수산·농업 자원과 지역의 돌봄·교육을 잇는 협동조합입니다.
+        완도애협동조합은 완도의 수산과 농업, 그리고 이곳의 돌봄과 교육을 잇는 지역 협동조합입니다.
         어르신의 기억, 바다의 산물, 아이들의 배움이 완도 안에서 다시 쓰이도록 일합니다.
       </p>
 
