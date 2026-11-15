@@ -19,11 +19,14 @@
 
 ```
 index.html   사이트 전체 (HTML + CSS + JS)
+assets/      사이트 이미지 (WebP 5종 — 히어로·소개·사업 3종)
 CNAME        wandoae.me  ← 삭제·수정 금지
 AGENTS.md    AI 코딩 에이전트·기여자 작업 규칙
 .github/copilot-instructions.md
 README.md
 ```
+
+> 이미지는 모두 AI 생성 이미지입니다(실제 인물·제품 촬영본 아님). 사이트 하단과 사진 캡션에 이 사실을 표기합니다.
 
 ## 로컬에서 보기
 

@@ -8,8 +8,8 @@
 GitHub Pages + 커스텀 도메인 `wandoae.me`.
 
 ## 반드시 지킬 것
-- **파일**: `index.html`(사이트 전체), `CNAME`(`wandoae.me` 고정), `README.md`, `AGENTS.md`.
-  `CNAME` 은 읽기만 한다. 삭제·수정 금지.
+- **파일**: `index.html`(사이트 전체), `assets/`(WebP 이미지 5종), `CNAME`(`wandoae.me` 고정), `README.md`, `AGENTS.md`.
+  `CNAME` 은 읽기만 한다. 삭제·수정 금지. 사진은 모두 AI 생성 이미지이므로 “AI 생성 이미지” 표기를 유지한다.
 - **기술**: HTML5 + 순수 CSS(CSS 변수) + Vanilla JS. 프레임워크·번들러·npm·CSS CDN(Tailwind 포함) 금지.
   외부 스크립트 금지. 웹폰트만 허용.
 - **한/영 전환**: 번역 대상 리프 엘리먼트에 `data-en="..."` 를 붙이고 JS가 `textContent` 를 교체한다.
