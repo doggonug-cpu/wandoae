@@ -1953,7 +1953,11 @@ section[id]{scroll-margin-top:84px}
         "_honey": ""
       };
       var contact = val("qfContact");
-      if (contact.indexOf("@") > -1) payload._replyto = contact;
+      if (contact.indexOf("@") > -1) {
+        // 연락처가 메일이면 '받는사람이 바로 답장할 수 있는 회신주소'로도 넘긴다.
+        payload._replyto = contact;
+        payload.email = contact;
+      }
 
       sending = true;
       if (submitBtn) submitBtn.disabled = true;
