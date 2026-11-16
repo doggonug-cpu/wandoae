@@ -285,7 +285,8 @@ textarea{font:inherit}
 .chart-grid{stroke:var(--line-soft);stroke-width:1}
 .chart-dot{fill:var(--paper);stroke:var(--moss);stroke-width:2.2}
 .chart-x{display:flex;justify-content:space-between;font-size:.64rem;color:var(--ink-mute);margin-top:4px;padding-inline:2px}
-.chart-y{display:flex;justify-content:space-between;font-size:.64rem;color:var(--ink-mute);margin-bottom:6px}
+.chart-plot{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px;align-items:stretch}
+.chart-y{display:flex;flex-direction:column;justify-content:space-between;font-size:.6rem;color:var(--ink-mute);text-align:right;padding-block:4px 12px}
 .alerts{display:grid;gap:9px;margin-top:12px}
 .alert{border:1px solid var(--line);border-radius:var(--radius);padding:12px 13px;background:var(--cream);display:grid;gap:7px}
 .alert.is-done{opacity:.62;background:var(--paper)}
@@ -465,7 +466,7 @@ textarea{font:inherit}
       <p class="ms-lede" data-en="Mind Shield is a web app for senior care settings: a spoken interview becomes a life album, an elder's day is checked in one tap, and the care staff reads it all on one screen. This demo runs entirely in your browser — nothing to install, no sign-in.">
         마인드 쉴드는 시니어 케어 현장을 위한 웹앱입니다. 구술 인터뷰는 생애 화보집이 되고,
         어르신의 하루는 한 번의 터치로 기록되며, 돌보는 사람은 그 기록을 한 화면에서 봅니다.
-        이 데모는 설치도 로그인도 없이 브라우저에서 바로 동작합니다.
+        이 데모는 설치하지 않고, 로그인 없이 브라우저에서 바로 동작합니다.
       </p>
       <ul class="ms-keys">
         <li><b>01</b><span data-en="Senior mode">어르신 모드</span></li>
@@ -604,8 +605,9 @@ textarea{font:inherit}
             <section class="card chart-card">
               <h3 data-en="Brain game score trend">기억 놀이 점수 추이</h3>
               <p class="card-s" data-en="Average of the six residents' one-minute game scores, recorded once a week.">어르신 여섯 분의 1분 놀이 점수 평균입니다. 주 1회 기록합니다.</p>
-              <div class="chart-y" aria-hidden="true"><span>90</span><span>50</span></div>
-              <svg viewBox="0 0 520 200" role="img" aria-label="기억 놀이 점수 추이 예시 그래프" data-en-aria-label="Sample chart of brain game score trend">
+              <div class="chart-plot">
+                <div class="chart-y" aria-hidden="true"><span>90%</span><span>50%</span></div>
+                <svg viewBox="0 0 520 200" role="img" aria-label="기억 놀이 점수 추이 예시 그래프" data-en-aria-label="Sample chart of brain game score trend">
                 <defs>
                   <linearGradient id="msGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stop-color="#2a6b50" stop-opacity=".2"/>
@@ -623,7 +625,8 @@ textarea{font:inherit}
                 <circle class="chart-dot" cx="304" cy="102.8" r="4"/>
                 <circle class="chart-dot" cx="392" cy="93.2" r="4"/>
                 <circle class="chart-dot" cx="480" cy="80.4" r="4"/>
-              </svg>
+                </svg>
+              </div>
               <div class="chart-x" aria-hidden="true"><span>10/6</span><span>10/13</span><span>10/20</span><span>10/27</span><span>11/3</span><span>11/10</span></div>
               <p class="tiny" style="margin-top:8px" data-en="Sample data. A rising line is a record of participation, not a diagnosis.">예시 데이터입니다. 선이 오르는 것은 참여 기록이며 진단이 아닙니다.</p>
             </section>
