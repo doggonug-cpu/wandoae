@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>QA · 마인드 쉴드 데모 렌더링 검사</title>
+<style>
+  body{margin:0;background:#0f1210;color:#e8e4da;font:14px/1.6 -apple-system,"Segoe UI",Roboto,sans-serif}
+  #report{padding:14px 16px;border-bottom:2px solid #2a6b50}
+  h1{font-size:15px;margin:0 0 8px}
+  .case{margin:6px 0;padding:6px 10px;border-radius:6px;background:#1a201c;font-family:ui-monospace,monospace;font-size:12px;white-space:pre-wrap}
+  .case b{color:#9dbdab}
+  .ok{color:#7ed4a2}
+  .bad{color:#ff8a74}
+  .frames{display:block}
+  .slot{padding:6px 8px;border-bottom:1px dashed #2a312c}
+  .slot h2{font-size:12px;margin:0 0 4px;color:#9dbdab;font-family:ui-monospace,monospace}
+  iframe{background:#fff;border:1px solid #333;display:block}
+</style>
+</head>
+<body>
+<div id="report"><h1>렌더링·동작·콘솔 오류 검사</h1><div id="out">검사 중…</div></div>
+<div class="frames" id="frames"></div>
+<script>
+(function () {
+  var CASES = [
+    { w: 390, h: 820, label: "mobile 390" },
+    { w: 768, h: 820, label: "tablet 768" },
+    { w: 1280, h: 820, label: "desktop 1280" },
+    { w: 390, h: 820, label: "mobile 390 (EN)", src: "./index.html?lang=en" }
+  ];
+  var out = document.getElementById("out");
+  var frames = document.getElementById("frames");
+  var pending = CASES.length;
+
+  function line(label, pass, val) {
+    return '<div class="case"><b>' + label + '</b>  ' +
+      '<span class="' + (pass ? "ok" : "bad") + '">' + (pass ? "PASS" : "FAIL") + '</span>  ' + val + '</div>';
+  }
+
+  function run(ifr, c) {
+    var win = ifr.contentWindow, doc = win.document;
+    var errs = [];
+    win.addEventListener("error", function (e) { errs.push(e.message); });
+    win.addEventListener("unhandledrejection", function () { errs.push("promise rejection"); });
+
+    var r = {};
+    var de = doc.documentElement;
+    r.overflow = de.scrollWidth <= de.clientWidth + 1 ? de.scrollWidth + "/" + de.clientWidth : "OVERFLOW " + de.scrollWidth + "/" + de.clientWidth;
+    r.h1 = doc.querySelectorAll("h1").length;
+    r.moods = doc.querySelectorAll(".mood-btn").length;
+    r.roster = doc.querySelectorAll(".elder").length;
+    r.opts = doc.querySelectorAll(".opt").length;
+    r.sms = ((doc.querySelector(".sms-body") || {}).textContent || "").trim().length;
+    r.broken = Array.prototype.filter.call(doc.images, function (i) { return i.complete && i.naturalWidth === 0; }).length;
+    r.kpis = doc.querySelectorAll(".kpi").length;
+    r.pages = doc.querySelectorAll(".book-page").length;
+
+    // 상호작용 1: 기분 선택
+    var mb = doc.querySelector(".mood-btn");
+    if (mb) mb.click();
+    r.moodFb = (doc.getElementById("moodFb").textContent || "").trim().length > 0;
+
+    // 상호작용 2: 두뇌 놀이 정답 클릭
+    var opt = doc.querySelectorAll(".opt")[1];
+    if (opt) opt.click();
+    r.quizFb = (doc.getElementById("quizFb").textContent || "").trim().length > 0;
+
+    // 상호작용 3: 탭 전환 + KPI 반영
+    doc.getElementById("tab-admin").click();
+    r.adminShown = !doc.getElementById("panel-admin").hidden;
+    r.kpiCheck = (doc.querySelector(".kpi-n") || {}).textContent || "";
+    doc.getElementById("tab-album").click();
+    r.albumShown = !doc.getElementById("panel-album").hidden;
+    doc.getElementById("nextPage").click();
+    r.pageInd = (doc.getElementById("pageInd") || {}).textContent || "";
+
+    // 상호작용 4: 직접 입력 분석
+    doc.getElementById("tab-senior").click();
+    var ta = doc.getElementById("smsInput");
+    ta.value = "검찰청입니다. 계좌가 범죄에 연루되어 안전계좌로 이체하세요 http://kb-secure-check.xyz";
+    doc.getElementById("analyzeBtn").click();
+    r.verdict = (doc.querySelector("#analyzeOut .lv") || {}).textContent || "none";
+
+    // 상호작용 5: 복약 체크
+    var med = doc.getElementById("med-a"); med.checked = true;
+    med.dispatchEvent(new win.Event("change", { bubbles: true }));
+    r.medProgress = (doc.getElementById("medProgress").textContent || "").trim();
+
+    setTimeout(function () {
+      r.errs = errs.length;
+      var pass = r.errs === 0 && r.h1 === 1 && r.moods === 5 && r.roster === 6 && r.opts === 4 &&
+        r.sms > 10 && r.broken === 0 && r.kpis === 4 && r.pages === 3 && r.moodFb && r.quizFb &&
+        r.adminShown && r.albumShown && r.pageInd.indexOf("2 / 3") === 0 && r.verdict !== "none" &&
+        String(r.overflow).indexOf("OVERFLOW") !== 0;
+      document.getElementById("res-" + c.idx).innerHTML = line(c.label, pass,
+        "errors=" + r.errs + " | overflow=" + r.overflow + " | h1=" + r.h1 + " moods=" + r.moods +
+        " roster=" + r.roster + " opts=" + r.opts + " kpis=" + r.kpis + " pages=" + r.pages +
+        " brokenImg=" + r.broken + " | moodFb=" + r.moodFb + " quizFb=" + r.quizFb +
+        " kpi1=" + r.kpiCheck + " page=" + r.pageInd + " verdict=" + r.verdict.slice(0, 24) +
+        " meds=" + r.medProgress.slice(0, 12));
+      pending -= 1;
+      if (pending === 0) document.getElementById("out").insertAdjacentHTML("afterbegin",
+        '<div class="case"><b>DONE</b> all cases ran</div>');
+    }, 900);
+  }
+
+  CASES.forEach(function (c, i) {
+    c.idx = i;
+    var slot = document.createElement("div");
+    slot.className = "slot";
+    slot.innerHTML = '<h2>' + c.label + '</h2><div id="res-' + i + '" class="case">…</div>';
+    frames.appendChild(slot);
+    var ifr = document.createElement("iframe");
+    ifr.width = c.w; ifr.height = c.h;
+    ifr.title = c.label;
+    ifr.src = c.src || "./index.html";
+    slot.appendChild(ifr);
+    ifr.addEventListener("load", function () {
+      try { run(ifr, c); }
+      catch (e) {
+        document.getElementById("res-" + i).innerHTML = line(c.label, false, "EXCEPTION " + e.message);
+        pending -= 1;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
